@@ -1,13 +1,11 @@
 import cv2
 from blink_detect import f_liveness_detection
-import cv2
 import numpy as np
 import imutils
 import time
 import os
 import math
 from sklearn import neighbors
-import os
 import os.path
 import pickle
 from PIL import Image, ImageDraw
