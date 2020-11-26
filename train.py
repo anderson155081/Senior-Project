@@ -15,8 +15,14 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 def train(train_dir, model_save_path=None, n_neighbors=None, knn_algo='ball_tree', verbose=False):
     X = []
     y = []
-    print("training %d person...."%(len(train_dir)))
-    progress = tqdm(total=len(train_dir))
+
+    count=0
+    for class_dir in os.listdir(train_dir):
+        if not os.path.isdir(os.path.join(train_dir, class_dir)):
+            continue
+        count+=1
+    print("Training %d person..."%(count))
+    progress = tqdm(total=count)
 
     # Loop through each person in the training set
     for class_dir in os.listdir(train_dir):
