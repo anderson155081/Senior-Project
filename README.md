@@ -3,7 +3,7 @@
 
 ## Features
 
-We use the python face-recognition libary to do the KNN-facerecognition, the program include eye-blink for anti-spoofing.
+We use the python [face-recognition](https://github.com/ageitgey/face_recognition) libary to do the KNN-facerecognition, the program include eye-blink for anti-spoofing.
 
 ## Requirement:
 ```
