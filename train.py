@@ -6,6 +6,8 @@ import pickle
 from PIL import Image, ImageDraw
 import face_recognition
 from face_recognition.face_recognition_cli import image_files_in_folder
+from tqdm import tqdm
+from time import sleep
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
@@ -13,6 +15,8 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 def train(train_dir, model_save_path=None, n_neighbors=None, knn_algo='ball_tree', verbose=False):
     X = []
     y = []
+    print("training %d person...."%(len(train_dir)))
+    progress = tqdm(total=len(train_dir))
 
     # Loop through each person in the training set
     for class_dir in os.listdir(train_dir):
@@ -32,6 +36,8 @@ def train(train_dir, model_save_path=None, n_neighbors=None, knn_algo='ball_tree
                 # Add face encoding for current image to the training set
                 X.append(face_recognition.face_encodings(image, known_face_locations=face_bounding_boxes)[0])
                 y.append(class_dir)
+        progress.update(1)
+        sleep(0.01)
 
     # Determine how many neighbors to use for weighting in the KNN classifier
     if n_neighbors is None:
