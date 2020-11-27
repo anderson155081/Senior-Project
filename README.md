@@ -16,7 +16,7 @@ pickle
 face_recognition
 ```
 
-### Register new data:
+### Register new person:
 ```bash
 $ python register.py
 ```
