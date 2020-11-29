@@ -74,7 +74,12 @@ if __name__ == "__main__":
 
     blink_getimg()
 
-    predictions = predict("rec.png", model_path="knn_facerecognition/model/trained_knn_model.clf")
+    predictions = predict("rec.png", model_path="model/trained_knn_model.clf")
+
+    for name, (top, right, bottom, left) in predictions:
+        outF = open("predict_result.txt", "w")
+        outF.write(name)
+    outF.close()
 
     # Print results on the console
     for name, (top, right, bottom, left) in predictions:
